@@ -1,39 +1,36 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image,} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-
-export default class WelcomeScreen extends Component {
-    render() {
-        return (
-            <View style={styles.viewContainer}>
-
-                <View>
-                    <Text style={styles.title}> RFID </Text>
-                </View>
-               
+const WelcomeScreen = ({ navigation }) => {
+    return (
+        <View style={styles.viewContainer}>
+            <View>
+                <Text style={styles.title}>RFID</Text>
+            </View>
 
             <View>
-                <TouchableOpacity style = {styles.button}>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={() => navigation.navigate('AddScreen')}
+                >
                     <Text style={styles.buttonText}>
                         Add New Sticker
                     </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress = {this.props.navigation.navigate('ManageScreen')}>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={() => navigation.navigate('ManageScreen')}
+                >
                     <Text style={styles.buttonText}>
-                    Manage Existing Stickers
+                        Manage Existing Stickers
                     </Text>
                 </TouchableOpacity>
             </View>
-                   
-            </View>
-        )
-    }
-
-
-}
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
-
     viewContainer: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -41,20 +38,25 @@ const styles = StyleSheet.create({
     },
     title: {
         marginBottom: 100,
+        fontSize: 36,
+        fontWeight: 'bold',
     },
     buttonText: {
-
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
     button: {
-        borderWidth: 5,
+        borderWidth: 2,
         borderColor: 'black',
         backgroundColor: 'gray',
-        borderRadius: 5,
-        padding: 10,
-        marginTop: 50,
+        borderRadius: 10,
+        padding: 15,
+        marginTop: 20,
+        width: 250,
         justifyContent: 'center',
         alignItems: 'center'
     },
+});
 
-
-})
+export default WelcomeScreen;
